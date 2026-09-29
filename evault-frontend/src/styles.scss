@@ -1,0 +1,441 @@
+/* ==========================================================================
+   eVault Enterprise Judiciary & Court Administration Design System
+   Modern Light Judicial Theme (Clean, Accessible Contrast & Polish)
+   ========================================================================== */
+
+:root {
+  /* Brand Palette - Deep Royal Navy & Judiciary Slate */
+  --primary-950: #070e1b;
+  --primary-900: #0f172a;
+  --primary-800: #1e293b;
+  --primary-700: #1e3a8a;
+  --primary-600: #2563eb;
+  --primary-500: #3b82f6;
+  --primary-100: #eff6ff;
+  --primary-50:  #f8fafc;
+
+  /* Gold / Amber Judiciary Accents */
+  --gold-500: #d97706;
+  --gold-400: #f59e0b;
+  --gold-100: #fef3c7;
+
+  /* Neutrals / Slate */
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+  --white:     #ffffff;
+
+  /* Theme-adaptive aliases (Ensuring crisp contrast everywhere) */
+  --color-slate-100: #0f172a; /* High contrast primary text */
+  --color-slate-200: #1e293b; /* Primary headings & labels */
+  --color-slate-300: #334155; /* Secondary text */
+  --color-slate-400: #64748b; /* Muted text / icons */
+  --color-slate-500: #94a3b8; /* Subtle borders / hints */
+  --color-slate-600: #cbd5e1; /* Dividers */
+  --color-slate-700: #e2e8f0; /* Card borders */
+  --color-slate-800: #f1f5f9; /* Subtle item background */
+  --color-slate-900: #f8fafc; /* Canvas background */
+
+  --color-navy-900:  #ffffff; /* Light card / dialog background */
+  --color-navy-800:  #ffffff; /* Elevated card surface */
+  --color-navy-700:  #f8fafc; /* Hover surface */
+
+  --color-gold-400:  #b45309; /* Readable deep amber gold */
+  --color-gold-500:  #d97706; /* Golden badge accent */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  --transition-fast: 0.15s ease-in-out;
+
+  /* Semantic Feedback */
+  --success-bg:     #f0fdf4;
+  --success-border: #bbf7d0;
+  --success-text:   #15803d;
+  --success-accent: #16a34a;
+
+  --warning-bg:     #fffbeb;
+  --warning-border: #fde68a;
+  --warning-text:   #b45309;
+  --warning-accent: #d97706;
+
+  --danger-bg:      #fef2f2;
+  --danger-border:  #fecaca;
+  --danger-text:    #b91c1c;
+  --danger-accent:  #dc2626;
+
+  --info-bg:        #eff6ff;
+  --info-border:    #bfdbfe;
+  --info-text:      #1d4ed8;
+  --info-accent:    #2563eb;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+  /* Radius & Borders */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --border-color: #e2e8f0;
+}
+
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 1.75rem; line-height: 2.25rem; }
+h2 { font-size: 1.375rem; line-height: 1.875rem; }
+h3 { font-size: 1.125rem; line-height: 1.625rem; }
+h4 { font-size: 1rem; line-height: 1.5rem; }
+p  { color: #475569; }
+
+/* Global Cards */
+.gov-card, .card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Global Buttons */
+.gov-btn, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  line-height: 1.25;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.gov-btn-primary, &.btn-primary {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border-color: #1e3a8a;
+    box-shadow: 0 1px 2px 0 rgba(30, 58, 138, 0.2);
+
+    &:hover:not(:disabled) {
+      background-color: #1e40af;
+      border-color: #1e40af;
+    }
+  }
+
+  &.gov-btn-secondary, &.btn-secondary {
+    background-color: #ffffff;
+    color: #334155;
+    border-color: #cbd5e1;
+
+    &:hover:not(:disabled) {
+      background-color: #f8fafc;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+  }
+
+  &.btn-success {
+    background-color: #16a34a;
+    color: #ffffff;
+    &:hover:not(:disabled) {
+      background-color: #15803d;
+    }
+  }
+
+  &.btn-danger {
+    background-color: #dc2626;
+    color: #ffffff;
+    &:hover:not(:disabled) {
+      background-color: #b91c1c;
+    }
+  }
+
+  &.btn-sm, &.btn-xs {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    gap: 4px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Global Form Controls */
+.gov-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.gov-input, .gov-select, .form-control {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: #94a3b8;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Global Tables */
+.gov-table, .table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+
+  thead tr {
+    background-color: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  th {
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+    vertical-align: middle;
+  }
+
+  tbody tr:hover td {
+    background-color: #f8fafc;
+  }
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Badge System */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+
+  &.badge-success {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+  }
+  &.badge-warning {
+    background-color: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+  }
+  &.badge-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+  &.badge-info {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+  }
+  &.badge-neutral {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+  }
+}
+
+/* Status / Priority Badges */
+.badge-status-open {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+.badge-status-investigation {
+  background-color: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+.badge-status-review {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+.badge-status-incourt {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+.badge-status-closed {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-priority-critical {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  font-weight: 800;
+}
+.badge-priority-high {
+  background-color: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+.badge-priority-medium {
+  background-color: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #fef08a;
+}
+.badge-priority-low {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* Alerts */
+.gov-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+
+  &.gov-alert-success {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+  }
+  &.gov-alert-danger {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+  }
+  &.gov-alert-warning {
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+  }
+  &.gov-alert-info {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+  }
+}
+
+/* Code & Cryptographic Hashes */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.crypto-hash, .hash-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  color: #1e3a8a;
+  word-break: break-all;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

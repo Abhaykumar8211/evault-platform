@@ -1,0 +1,17 @@
+@if (isLandingOrAuth()) {
+  <!-- Full Screen Landing / Login Experience -->
+  <router-outlet></router-outlet>
+} @else {
+  <!-- Internal Application Shell with Navigation & Sidebar -->
+  <div class="app-layout">
+    <app-navbar></app-navbar>
+    <div class="app-body">
+      @if (authService.isAuthenticated()) {
+        <app-sidebar></app-sidebar>
+      }
+      <main class="app-content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+}
