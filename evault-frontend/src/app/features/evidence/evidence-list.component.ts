@@ -92,13 +92,18 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
                   <div class="item-number font-mono">{{ ev.itemNumber }}</div>
                   <div class="barcode-pill font-mono">{{ ev.barcode || ('BC-' + ev.id) }}</div>
                 </td>
+
                 <td>
                   <div class="evidence-name">{{ ev.name }}</div>
-                  <div class="text-xs text-muted">{{ ev.description | slice:0:70 }}{{ (ev.description?.length || 0) > 70 ? '...' : '' }}</div>
+                  <div class="text-xs text-muted">
+                    {{ ev.description | slice:0:70 }}{{ (ev.description.length || 0) > 70 ? '...' : '' }}
+                  </div>
                 </td>
+
                 <td>
                   <span class="type-pill">{{ ev.category }}</span>
                 </td>
+
                 <td>
                   <div class="custodian-cell">
                     <span class="material-icons">badge</span>
@@ -106,16 +111,19 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
                   </div>
                   <div class="text-xs text-secondary">{{ ev.storageLocation }}</div>
                 </td>
+
                 <td>
                   <div class="text-xs text-collection">{{ ev.collectionLocation }}</div>
                   <div class="text-xs text-muted font-mono">{{ ev.collectedAt | date:'dd MMM yyyy' }}</div>
                 </td>
+
                 <td>
                   <span class="badge" [ngClass]="ev.sealIntact ? 'badge-success' : 'badge-danger'">
                     <span class="material-icons text-xs">{{ ev.sealIntact ? 'verified' : 'gpp_bad' }}</span>
                     {{ ev.sealIntact ? 'INTACT' : 'COMPROMISED' }}
                   </span>
                 </td>
+
                 <td style="text-align: right;">
                   <button (click)="viewCustody(ev)" class="gov-btn gov-btn-secondary btn-xs">
                     <span class="material-icons">timeline</span>
@@ -149,6 +157,7 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
                 <span class="font-mono text-xs text-gold-400">{{ selectedEvidence.itemNumber }}</span>
               </div>
             </div>
+
             <button (click)="selectedEvidence = null" class="close-btn">
               <span class="material-icons">close</span>
             </button>
@@ -161,18 +170,27 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
                   <span class="step-num">{{ i + 1 }}</span>
                   <div class="line" *ngIf="i < selectedCustodyEvents.length - 1"></div>
                 </div>
+
                 <div class="timeline-content gov-card">
                   <div class="event-top">
                     <h4>{{ event.action }}</h4>
-                    <span class="font-mono text-xs text-slate-400">{{ event.timestamp | date:'dd MMM yyyy, HH:mm' }} IST</span>
+                    <span class="font-mono text-xs text-slate-400">
+                      {{ event.timestamp | date:'dd MMM yyyy, HH:mm' }} IST
+                    </span>
                   </div>
+
                   <div class="text-xs text-slate-300">
                     <strong>Custodian:</strong> {{ event.actor }} ({{ event.actorRole }})
                   </div>
+
                   <div class="text-xs text-slate-400 mt-1" *ngIf="event.fromLocation && event.toLocation">
                     <strong>Transit:</strong> {{ event.fromLocation }} → {{ event.toLocation }}
                   </div>
-                  <p class="text-xs text-slate-300 mt-2" *ngIf="event.remarks">{{ event.remarks }}</p>
+
+                  <p class="text-xs text-slate-300 mt-2" *ngIf="event.remarks">
+                    {{ event.remarks }}
+                  </p>
+
                   <div class="font-mono text-xs text-gold-400 mt-2" *ngIf="event.verificationHash">
                     Digest: {{ event.verificationHash | slice:0:32 }}...
                   </div>
@@ -220,9 +238,23 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       margin-bottom: 4px;
     }
 
-    .separator { color: var(--color-slate-600); }
-    .page-title { font-size: 26px; font-weight: 800; color: #0f172a; margin: 0 0 4px 0; letter-spacing: -0.02em; }
-    .page-subtitle { font-size: 13px; color: #475569; margin: 0; }
+    .separator {
+      color: var(--color-slate-600);
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .page-subtitle {
+      font-size: 13px;
+      color: #475569;
+      margin: 0;
+    }
 
     .item-number {
       color: #1e3a8a;
@@ -269,7 +301,10 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
         color: #64748b;
       }
 
-      input { padding-left: 38px; width: 100%; }
+      input {
+        padding-left: 38px;
+        width: 100%;
+      }
     }
 
     .filter-group {
@@ -277,12 +312,24 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       align-items: center;
       gap: var(--space-3);
       flex-wrap: wrap;
-      select { min-width: 160px; }
+
+      select {
+        min-width: 160px;
+      }
     }
 
-    .summary-bar { margin-bottom: var(--space-3); color: #475569; }
+    .summary-bar {
+      margin-bottom: var(--space-3);
+      color: #475569;
+    }
 
-    .table-card { padding: 0; overflow: hidden; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; }
+    .table-card {
+      padding: 0;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
 
     .barcode-pill {
       font-size: 10px;
@@ -309,13 +356,19 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       color: #0f172a;
       font-weight: 600;
 
-      .material-icons { font-size: 14px; color: #d97706; }
+      .material-icons {
+        font-size: 14px;
+        color: #d97706;
+      }
     }
 
     .btn-xs {
       padding: 4px 10px;
       font-size: 11px;
-      .material-icons { font-size: 13px; }
+
+      .material-icons {
+        font-size: 13px;
+      }
     }
 
     .loading-state {
@@ -340,15 +393,32 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       animation: spin 0.8s linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     .empty-state {
       padding: var(--space-8);
       text-align: center;
       color: #64748b;
-      .material-icons { font-size: 40px; color: #94a3b8; margin-bottom: 4px; }
-      h4 { color: #0f172a; margin: 0 0 4px 0; }
-      p { font-size: 12px; margin: 0; }
+
+      .material-icons {
+        font-size: 40px;
+        color: #94a3b8;
+        margin-bottom: 4px;
+      }
+
+      h4 {
+        color: #0f172a;
+        margin: 0 0 4px 0;
+      }
+
+      p {
+        font-size: 12px;
+        margin: 0;
+      }
     }
 
     /* Modal & Timeline */
@@ -387,7 +457,13 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       display: flex;
       align-items: center;
       gap: var(--space-3);
-      h2 { font-size: 16px; font-weight: 700; color: #0f172a; margin: 0; }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0;
+      }
     }
 
     .close-btn {
@@ -395,10 +471,18 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       border: none;
       color: #64748b;
       cursor: pointer;
-      &:hover { color: #0f172a; }
+
+      &:hover {
+        color: #0f172a;
+      }
     }
 
-    .modal-body { padding: var(--space-6); max-height: 70vh; overflow-y: auto; }
+    .modal-body {
+      padding: var(--space-6);
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
     .modal-footer {
       display: flex;
       justify-content: flex-end;
@@ -413,7 +497,12 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       padding-left: var(--space-2);
     }
 
-    .timeline-step { display: flex; gap: var(--space-4); position: relative; }
+    .timeline-step {
+      display: flex;
+      gap: var(--space-4);
+      position: relative;
+    }
+
     .timeline-marker {
       display: flex;
       flex-direction: column;
@@ -435,7 +524,12 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
         font-family: var(--font-mono);
       }
 
-      .line { flex: 1; width: 2px; background: var(--color-slate-700); margin: 4px 0; }
+      .line {
+        flex: 1;
+        width: 2px;
+        background: var(--color-slate-700);
+        margin: 4px 0;
+      }
     }
 
     .timeline-content {
@@ -450,7 +544,12 @@ import { Evidence, ChainOfCustodyEvent } from '../../core/models/evidence.model'
       justify-content: space-between;
       align-items: center;
       margin-bottom: var(--space-2);
-      h4 { margin: 0; font-size: 13px; color: var(--color-slate-100); }
+
+      h4 {
+        margin: 0;
+        font-size: 13px;
+        color: var(--color-slate-100);
+      }
     }
   `]
 })
