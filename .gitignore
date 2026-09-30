@@ -2,3 +2,9 @@ node_modules/
 .angular/
 dist/
 target/
+cache/
+artifacts/
+typechain-types/
+evault-backend/data/
+*.mv.db
+*.trace.db
